@@ -1,6 +1,0 @@
-node_modules/
-.gradle/
-.idea/
-build/
-*.iml
-stats.json

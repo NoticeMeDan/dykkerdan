@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  webapp:
+    build: ./webapp
+    container_name: dykkerdan-webapp
+    ports:
+      - 8080:80
+    depends_on:
+      - webservice
+
+  webservice:
+    build: ./webservice
+    container_name: dykkerdan-webservice
+    expose:
+      - 80
+    ports:
+      - 8081:80
+      - 6001:6001
+    depends_on:
+      - postgres
+      - fafnir-sso
+    environment:
+      - DB_HOST=postgres
+      - SCHEDULER_POOL_SIZE=1
+      - FAFNIR_URL=fafnir-sso
+      - FAFNIR_PORT=8080
+
+  fafnir-sso:
+    image: actoaps/fafnir-sso:1.1.144.c4a624e
+    container_name: dykkerdan-fafnir
+    expose:
+      - 8080
+    environment:
+      - >-
+        ACTO_CONF=
+        {
+          "successUrl": "http://localhost:3000/loginredirect",
+          "failureUrl": "http://localhost:3000/loginerror",
+          "myUrl": "http://localhost",
+          "testMode": true
+        }
+
+  postgres:
+    image: postgres:12.1-alpine
+    container_name: dykkerdan-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dykkerdan
