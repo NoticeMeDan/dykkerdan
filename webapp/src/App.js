@@ -33,4 +33,4 @@ function GlobalProviders ({ children }) {
     )
 }
 
-export default hot(<GlobalProviders><App /></GlobalProviders>)
+export default hot(() => <GlobalProviders><App /></GlobalProviders>)
