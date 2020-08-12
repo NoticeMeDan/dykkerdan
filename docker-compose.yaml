@@ -35,9 +35,11 @@ services:
       - >-
         ACTO_CONF=
         {
+          "googleAppId": "${GOOGLE_APP_ID}",
+          "googleSecret": "${GOOGLE_SECRET}",
           "successUrl": "http://localhost:3000/loginredirect",
           "failureUrl": "http://localhost:3000/loginerror",
-          "myUrl": "http://localhost",
+          "myUrl": "http://localhost:8080",
           "testMode": true
         }
 
