@@ -1,6 +1,5 @@
 package com.noticemedan.dykkerdan.webservice.entity
 
-import org.springframework.context.annotation.Primary
 import java.util.*
 import javax.persistence.*
 
