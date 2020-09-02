@@ -1,2 +1,118 @@
 databaseChangeLog:
-  -
+  - changeSet:
+      id: 1
+      author: elias
+      changes:
+        - createTable:
+            tableName: diver
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: phone
+                  type: nvarchar(255)
+              - column:
+                  name: weight
+                  type: int
+              - column:
+                  name: name
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: diver_email
+            tableName: diver
+            unique: true
+            columns:
+              - column:
+                  name: email
+
+        - createTable:
+            tableName: dive
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: buddy_name
+                  type: nvarchar(255)
+              - column:
+                  name: dive_number
+                  type: int
+              - column:
+                  name: date
+                  type: date
+              - column:
+                  name: location
+                  type: nvarchar(255)
+              - column:
+                  name: time_in
+                  type: timestamp
+              - column:
+                  name: time_out
+                  type: timestamp
+              - column:
+                  name: start_pressure
+                  type: int
+              - column:
+                  name: end_pressure
+                  type: int
+              - column:
+                  name: max_depth
+                  type: int
+              - column:
+                  name: bottom_time
+                  type: int
+              - column:
+                  name: weight
+                  type: int
+              - column:
+                  name: comment
+                  type: clob
+              - column:
+                  name: salt_water
+                  type: boolean
+              - column:
+                  name: fresh_water
+                  type: boolean
+              - column:
+                  name: shore_dive
+                  type: boolean
+              - column:
+                  name: boat_dive
+                  type: boolean
+              - column:
+                  name: visibility
+                  type: nvarchar(128)
+              - column:
+                  name: air_temp
+                  type: int
+              - column:
+                  name: surface_temp
+                  type: int
+              - column:
+                  name: bottom_temp
+                  type: int
+              - column:
+                  name: diver_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: diver(id)
+                    foreignKeyName: fk_dive_diver

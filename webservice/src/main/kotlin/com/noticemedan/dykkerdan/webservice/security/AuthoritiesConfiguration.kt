@@ -21,6 +21,7 @@ class AuthoritiesConfiguration {
                     .orElse(listOf())
         }
     }
+
     @Bean
     fun publicKeyProvider(
             @Value("\${FAFNIR_URL}") fafnirUrl: String,
