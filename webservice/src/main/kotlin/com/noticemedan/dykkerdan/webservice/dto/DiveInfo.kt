@@ -1,13 +1,8 @@
-package com.noticemedan.dykkerdan.webservice.entity
+package com.noticemedan.dykkerdan.webservice.dto
 
 import java.time.Instant
-import javax.persistence.*
 
-@Entity
-data class Dive (
-        @ManyToOne
-        @JoinColumn(name = "diver_id")
-        var diver: Diver,
+data class DiveInfo (
         var buddyName: String? = null,
         var diveNumber: Int? = null,
         var date: Instant? = null,
@@ -27,6 +22,5 @@ data class Dive (
         var airTemp: Int? = null,
         var surfaceTemp: Int? = null,
         var bottomTemp: Int? = null,
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null
 )

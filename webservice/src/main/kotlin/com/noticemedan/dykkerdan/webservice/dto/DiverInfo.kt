@@ -1,8 +1,8 @@
 package com.noticemedan.dykkerdan.webservice.dto
 
 data class DiverInfo (
-        var email: String?,
-        var name: String?,
-        var phone: String?,
-        var weight: Int?
+        var email: String? = null,
+        var name: String? = null,
+        var phone: String? = null,
+        var weight: Int? = null
 )
